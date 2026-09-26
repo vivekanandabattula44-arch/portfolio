@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vivek - B.Tech student portfolio">
+  <title>Vivek | Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --card:rgba(255,255,255,.075);
+      --border:rgba(255,255,255,.14);
+      --text:#f4f7fb;
+      --muted:#aab8ca;
+      --accent:#61dafb;
+      --accent2:#8b5cf6;
+    }
+    *{scroll-behavior:smooth}
+    body{
+      background:
+        radial-gradient(circle at 10% 10%, rgba(97,218,251,.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(139,92,246,.14), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      overflow-x:hidden;
+    }
+    .navbar{
+      background:rgba(7,17,31,.82)!important;
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .navbar-brand{font-weight:800;letter-spacing:.5px}
+    .nav-link{color:#dbe7f4!important}
+    .nav-link:hover{color:var(--accent)!important}
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:90px}
+    .hero-title{font-size:clamp(2.7rem,10vw,5.8rem);font-weight:900;line-height:.95}
+    .gradient-text{
+      background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-sub{color:var(--muted);font-size:clamp(1rem,2.5vw,1.25rem)}
+    .glass{
+      background:var(--card);
+      border:1px solid var(--border);
+      box-shadow:0 18px 60px rgba(0,0,0,.25);
+      backdrop-filter:blur(15px);
+    }
+    .profile-wrap{position:relative;display:inline-block}
+    .profile-img{
+      width:min(78vw,360px);height:min(78vw,360px);
+      object-fit:cover;border-radius:50%;
+      border:5px solid rgba(97,218,251,.55);
+      box-shadow:0 0 0 12px rgba(97,218,251,.05),0 0 70px rgba(97,218,251,.25);
+      animation:float 4s ease-in-out infinite;
+    }
+    .status-dot{
+      position:absolute;right:10%;bottom:8%;
+      width:24px;height:24px;background:#22c55e;border:4px solid var(--bg);border-radius:50%;
+    }
+    @keyframes float{50%{transform:translateY(-12px)}}
+    section{padding:90px 0}
+    .section-title{font-weight:800;font-size:clamp(2rem,6vw,3rem)}
+    .section-title span{color:var(--accent)}
+    .info-card,.project-card,.skill-card{
+      height:100%;border-radius:22px;padding:24px;
+      transition:.3s ease;
+    }
+    .info-card:hover,.project-card:hover,.skill-card:hover{
+      transform:translateY(-7px);border-color:rgba(97,218,251,.5);
+    }
+    .icon-box{
+      width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(97,218,251,.2),rgba(139,92,246,.2));
+      color:var(--accent);font-size:1.4rem;margin-bottom:16px;
+    }
+    .muted{color:var(--muted)}
+    .badge-skill{
+      font-size:.9rem;padding:.65rem .85rem;border-radius:999px;
+      background:rgba(97,218,251,.1);color:#cceffc;border:1px solid rgba(97,218,251,.22);
+    }
+    .project-icon{font-size:2.3rem;color:var(--accent)}
+    .btn-main{
+      background:linear-gradient(135deg,var(--accent),#3aa9ff);
+      color:#06101b;border:0;font-weight:800;border-radius:12px;padding:12px 20px;
+    }
+    .btn-main:hover{transform:translateY(-2px);color:#06101b}
+    .btn-outline-light{border-radius:12px}
+    .progress{height:8px;background:rgba(255,255,255,.09)}
+    .progress-bar{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .contact-box{border-radius:26px}
+    footer{border-top:1px solid var(--border);color:var(--muted);padding:28px 0}
+    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+    .reveal.show{opacity:1;transform:none}
+    .back-top{
+      position:fixed;right:18px;bottom:18px;width:46px;height:46px;
+      border:0;border-radius:50%;display:none;z-index:1000;
+      background:var(--accent);color:#06101b;font-size:1.2rem;
+    }
+    @media(max-width:575px){
+      section{padding:70px 0}
+      .hero{text-align:center}
+      .hero-actions{justify-content:center}
+      .info-card,.project-card,.skill-card{padding:20px}
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><span class="gradient-text">VIVEK</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 order-2 order-lg-1 reveal">
+            <p class="text-uppercase fw-bold mb-3" style="color:var(--accent);letter-spacing:3px">
+              B.Tech Student • Developer • Designer
+            </p>
+            <h1 class="hero-title">Hi, I'm <span class="gradient-text">Vivek</span></h1>
+            <p class="hero-sub mt-4 mb-4">
+              I’m a coder, designer, web developer and gamer who enjoys building useful,
+              creative and interactive digital experiences.
+            </p>
+            <div class="d-flex flex-wrap gap-3 hero-actions">
+              <a class="btn btn-main" href="#projects"><i class="bi bi-code-slash me-2"></i>View Projects</a>
+              <a class="btn btn-outline-light" href="#contact"><i class="bi bi-person-lines-fill me-2"></i>Contact Me</a>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center order-1 order-lg-2 reveal">
+            <div class="profile-wrap">
+              <img class="profile-img" alt="Vivek profile photo"
+                src="data:image/webp;base64,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">
+              <span class="status-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="text-uppercase fw-bold mb-2" style="color:var(--accent)">About Me</p>
+          <h2 class="section-title">A little <span>about</span> me</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal"><div class="glass info-card">
+            <div class="icon-box"><i class="bi bi-person"></i></div><h5>Name</h5><p class="muted mb-0">Vivek</p>
+          </div></div>
+          <div class="col-md-6 col-lg-3 reveal"><div class="glass info-card">
+            <div class="icon-box"><i class="bi bi-building"></i></div><h5>College</h5><p class="muted mb-0">Sir C R Reddy College</p>
+          </div></div>
+          <div class="col-md-6 col-lg-3 reveal"><div class="glass info-card">
+            <div class="icon-box"><i class="bi bi-mortarboard"></i></div><h5>Department</h5><p class="muted mb-0">B.Tech</p>
+          </div></div>
+          <div class="col-md-6 col-lg-3 reveal"><div class="glass info-card">
+            <div class="icon-box"><i class="bi bi-bar-chart"></i></div><h5>CGPA</h5><p class="muted mb-0">8.5</p>
+          </div></div>
+        </div>
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8 reveal">
+            <div class="glass info-card text-center">
+              <span class="badge-skill">Student ID: 7</span>
+              <p class="muted mt-3 mb-0">
+                I’m passionate about technology and creative problem solving. My interests combine
+                programming, web development, UI design and gaming.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="text-uppercase fw-bold mb-2" style="color:var(--accent)">What I Do</p>
+          <h2 class="section-title">My <span>skills</span></h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-6 col-lg-3 reveal"><div class="glass skill-card text-center">
+            <div class="icon-box mx-auto"><i class="bi bi-terminal"></i></div><h5>Coder</h5><p class="muted small">Logic, programming & problem solving</p>
+            <div class="progress"><div class="progress-bar" style="width:88%"></div></div>
+          </div></div>
+          <div class="col-6 col-lg-3 reveal"><div class="glass skill-card text-center">
+            <div class="icon-box mx-auto"><i class="bi bi-palette"></i></div><h5>Designer</h5><p class="muted small">Creative UI and visual design</p>
+            <div class="progress"><div class="progress-bar" style="width:82%"></div></div>
+          </div></div>
+          <div class="col-6 col-lg-3 reveal"><div class="glass skill-card text-center">
+            <div class="icon-box mx-auto"><i class="bi bi-globe2"></i></div><h5>Web Developer</h5><p class="muted small">Responsive and interactive websites</p>
+            <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+          </div></div>
+          <div class="col-6 col-lg-3 reveal"><div class="glass skill-card text-center">
+            <div class="icon-box mx-auto"><i class="bi bi-controller"></i></div><h5>Gamer</h5><p class="muted small">Gaming, strategy and exploration</p>
+            <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <p class="text-uppercase fw-bold mb-2" style="color:var(--accent)">My Work</p>
+          <h2 class="section-title">Featured <span>projects</span></h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="glass project-card">
+              <div class="project-icon mb-3"><i class="bi bi-thermometer-half"></i></div>
+              <h4>Climate Controller</h4>
+              <p class="muted">A smart climate-control concept designed to monitor environmental conditions and manage temperature automatically.</p>
+              <span class="badge-skill">IoT • Control System</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="glass project-card">
+              <div class="project-icon mb-3"><i class="bi bi-speedometer2"></i></div>
+              <h4>Speed Detector</h4>
+              <p class="muted">A speed-monitoring project focused on detecting vehicle speed and presenting useful information clearly.</p>
+              <span class="badge-skill">Sensors • Detection</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="glass project-card">
+              <div class="project-icon mb-3"><i class="bi bi-shield-check"></i></div>
+              <h4>Accident Preventer</h4>
+              <p class="muted">A safety-focused concept that uses detection and alert mechanisms to help reduce accident risks.</p>
+              <span class="badge-skill">Safety • Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="glass contact-box p-4 p-md-5 text-center reveal">
+          <p class="text-uppercase fw-bold mb-2" style="color:var(--accent)">Let's Connect</p>
+          <h2 class="section-title mb-3">Have an idea? <span>Let's build it.</span></h2>
+          <p class="muted mx-auto" style="max-width:650px">
+            Thanks for visiting my portfolio. I’m always interested in learning, creating and working on interesting projects.
+          </p>
+          <a href="mailto:your-email@example.com" class="btn btn-main mt-2">
+            <i class="bi bi-envelope me-2"></i>Get In Touch
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container text-center">
+      <div class="fw-bold text-light">Vivek</div>
+      <div class="small mt-1">B.Tech • Coder • Designer • Web Developer • Gamer</div>
+      <div class="small mt-2">© <span id="year"></span> Vivek. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll reveal animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Back-to-top button
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.style.display = window.scrollY > 500 ? 'grid' : 'none';
+    });
+    backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Close mobile navbar after clicking a link
+    document.querySelectorAll('.navbar .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const nav = document.getElementById('nav');
+        if (nav.classList.contains('show')) {
+          bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
